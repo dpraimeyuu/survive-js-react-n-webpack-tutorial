@@ -1,6 +1,7 @@
 import React from 'react';
 import Editable from './Editable.jsx';
 import Note from './Note-draggable.jsx';
+import LaneActions from '../actions/LaneActions.js';
 
 export default class Notes extends React.Component {
 	constructor(props){
@@ -18,7 +19,7 @@ export default class Notes extends React.Component {
 		return (
 			<Note className="note"
 				  key={`note${note.id}`}
-				  onMove={this.onMoveNote}
+				  onMove={LaneActions.move}
 				  id={note.id}>
 				<Editable
 					value={note.task}
@@ -27,9 +28,5 @@ export default class Notes extends React.Component {
 				/>
 			</Note>
 		);
-	}
-	
-	onMoveNote({sourceId, targetId}){
-		console.log('sourceId', sourceId, 'targetId', targetId);
 	}
 };
